@@ -153,7 +153,7 @@ pip install -r requirements.txt
 | **Frontend**  | HTML, CSS, JavaScript, TensorFlow.js |
 | **ML Training** | Python, TensorFlow/Keras, NumPy, Pandas |
 | **Visualization** | Matplotlib, Seaborn |
-| **Deployment** | GitHub Pages |
+
 
 
 ## Model Pipeline Workflow
