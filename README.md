@@ -10,41 +10,7 @@ It’s not just a game it’s an interactive demo of how a **simple neural netwo
 
 The motivation behind **Math Run** was to combine my interests in deep learning and practical application deployment into one interactive project. By training a simple neural network on the MNIST dataset and deploying it with TensorFlow.js, I wanted to demonstrate how deep learning models can move beyond research environments and power real-time applications directly in the browser.  
 
-This project showcases both the end-to-end deep learning workflow (data → training → deployment) and my ability to build engaging, interactive web application.
-
-
-## File Structure
-
-This section provides a detailed overview of the project directory structure to help you understand where key files and resources are located.
-
-```text
-.
-├── .venv/                                # (Not provided) Local Python virtual environment
-├── data/
-│   └── MNIST.zip                         # Original MNIST dataset (for training)
-├── images/                               # Screenshots and visual assets
-├── js/                                   # Frontend game logic & utilities
-│   ├── app.js                            # Main app entry point (load model, predictions)
-│   ├── drawing.js                        # Canvas drawing & handwriting input handling
-│   ├── game.js                           # Core game mechanics (runner, monster, scoring)
-│   ├── help.js                           # Help / onboarding modal interactions
-│   ├── processing.js                     # Preprocessing pipeline for MNIST input
-│   └── utils.js                          # Utility functions (Otsu, blur, centroid, etc.)
-├── mlp_training/                         # Python training scripts & experiments
-│   ├── logs/                             # Training logs
-│   ├── notebook.ipynb                    # Jupyter notebook (training & evaluation demo)
-│   └── saved_model/                      # TensorFlow SavedModel format (before conversion)
-├── mnist_tfjs_model/                     # Deployed TensorFlow.js model
-│   ├── group1-shard1of1.bin              # Model weights shard
-│   └── model.json                        # Model architecture and weight manifest               
-├── index.html                            # Webpage entry point (game UI + scripts)
-├── styles.css                            # Styling for the game UI
-├── LICENSE                               # Custom license (non-commercial, MNIST open use)
-├── README.md                             # Project documentation (you are here)
-├── requirements.txt                      # Python dependencies (training & preprocessing)
-└── .gitignore                            # Ignore virtual env, cache, model artifacts
-```
-
+This project showcases both the end-to-end deep learning workflow (data → training → deployment) and my ability to build engaging, interactive web applications.
 
 ## Quick Start (Local Run)
 
@@ -62,11 +28,10 @@ source .venv/bin/activate
 # On Windows (PowerShell):
 .venv\Scripts\Activate.ps1
 
-# 3. Install Python dependencies (for training / preprocessing)
+# 3. Install Python dependencies (for training/preprocessing)
 pip install -r requirements.txt
 
-# 4. Start a local HTTP server
-python -m http.server 8000
+# 4. Start a local HTTP server: python -m http.server 8000
 ```
 
 Once the server is running, open the game in your browser at: `http://localhost:8000/` (recommended: Google Chrome)
