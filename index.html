@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Math Challenge — MNIST Handwriting</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <!-- TFJS + WASM -->
+    <!-- Load TensorFlow.js core library (machine learning in the browser). This gives you the global "tf" object. -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@4.22.0/dist/tf.min.js"></script>
+    <!-- Load the WebAssembly (WASM) backend for TensorFlow.js. 
+    This allows computations to run faster using WebAssembly if you call
+    tf.setBackend('wasm'). -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs-backend-wasm@4.22.0/dist/tf-backend-wasm.min.js"></script>
+</head>
+
+<body class="math-run">
+    <!-- Parallax world background -->
+    <div class="world" aria-hidden="true">
+      <div class="layer sky"></div>
+      <div class="layer clouds"></div>
+    </div>
+
+    <!-- Tiny HUD -->
+    <div class="hud-mini">
+      <span id="backend">Backend: —</span>
+      <span id="modelStatus">Model: Loading</span>
+      <span id="latency">Latency: — ms</span>
+    </div>
+
+    <!-- Header -->
+    <header class="hero">
+      <h1 class="brand">Math Run</h1>
+      <div class="hero-hud">
+        <span id="gameLevel" class="chip">Level 1(more coming soon)</span>
+        <div class="timer hero-timer"><div id="timerBar"></div></div>
+        <span id="gameScore" class="chip">0/10</span>
+      </div>
+    </header>
+
+    <!-- Stage -->
+    <main class="stage">
+      <div class="equation">
+        <div class="expr">
+          <span id="problemText">Click "Start"</span>
+          <span id="eqSign" aria-hidden="true">=</span>
+          <span id="answerSlots" class="answer-slots">
+            <span class="slot" id="slot">_</span>
+          </span>
+        </div>
+      </div>
+      <!-- Handwriting canvas -->
+      <div class="answer-box">
+        <canvas id="pad" width="280" height="280" aria-label="Handwrite your answer"></canvas>
+      </div>
+    </main>
+
+    <!-- Status message (game hints / results) -->
+    <section id="statusWrap" aria-live="polite" aria-atomic="true">
+      <div id="statusMessage" class="status" role="status"></div>
+    </section>
+
+    <!-- Controls -->
+    <section class="controls">
+      <button id="btnStartGame" class="btn primary">Start</button>
+      <button id="btnSubmit" class="btn accent" disabled>Submit</button>
+      <button id="btnGameClear" class="btn">Clear Canvas</button>
+    </section>
+
+    <!-- Track -->
+    <section class="track-wrap">
+      <div class="track">
+        <div id="hero" class="actor">😎</div>
+        <div id="monster" class="actor">👹</div>
+        <div class="track-meter">
+          <div class="meter-bg"></div>
+          <div id="gapFill" class="meter-fill"></div>
+          <div id="gapText" class="meter-text"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Help / Onboarding (moved inside body + updated ID/class + only “Got it” button) ===== -->
+    <button id="btnHelp" class="help-fab" aria-label="Help">?</button>
+
+    <div id="helpOverlay" class="help-overlay" hidden aria-modal="true" role="dialog">
+      <div class="help-dialog" role="document" aria-labelledby="helpTitle">
+        <h2 id="helpTitle">How to Play</h2>
+        <ul class="help-list">
+          <li>This is <b>Math Run</b> — like Temple Run, but with numbers!</li>
+          <li>You are the runner 😎. Escape the chasing monster 👹.</li>
+          <li>Write your answer (0–9) in the canvas and hit <b>Submit</b>.</li>
+          <li>You only have <b>10 seconds</b> for each problem!</li>
+          <li>Correct answers make 😎 dash forward.</li>
+          <li>Wrong, unclear, or late answers let 👹 catch up.</li>
+          <li>Survive 10 questions to win the run!</li>
+        </ul>
+        <div class="help-actions">
+          <button id="helpGotIt" class="btn accent">Got it</button>
+        </div>
+      </div>
+    </div>
+    <!-- ===== End of Help ===== -->
+
+    <!-- Scripts: make sure help.js is loaded after the markup -->
+    <script type="module" src="./js/app.js?v=status-a"></script>
+    <script type="module" src="./js/game.js?v=status-a"></script>
+    <script type="module" src="./js/help.js?v=garden-v2"></script>
+</body>
+</html>
